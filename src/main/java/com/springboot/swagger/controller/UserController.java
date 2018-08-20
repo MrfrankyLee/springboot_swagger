@@ -136,4 +136,18 @@ public class UserController {
         userRepository.save(user);
         return userService.findAuthorById(user.getId()) == null ?"error" : "success";
     }
+
+    @ApiOperation(value = "返回用户json类型",notes = "getUser")
+    @PostMapping(value = "/getUser")
+    public User getUser(@RequestParam @ApiParam(value = "用户id") long id,HttpServletRequest request){
+        User u = userService.findAuthorById(id);
+
+        return u;
+    }
+
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String hello() throws Exception {
+        int i = 1/0;
+        return "templates/error";
+    }
 }
