@@ -7,6 +7,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -30,11 +31,12 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
+        Contact contact = new Contact("李晓乐","https://github.com/MrfrankyLee/springboot_swagger","franky8805@gmai.com");
         return new ApiInfoBuilder()
                 .title("SpringBoot-Swagger2集成和使用")
-                 //  .description("oKong | 趔趄的猿")
+                  .description("spring_boot")
                 // 作者信息
-                //.contact(new Contact("李晓乐", "franky8805@gamil.com"))
+                .contact(contact)
                 .version("1.0.0")
                 .build();
     }

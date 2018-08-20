@@ -1,7 +1,6 @@
 package com.springboot.swagger.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -15,7 +14,7 @@ import java.time.ZonedDateTime;
 
 /**
  * @author lixiaole
- * @date 2018/8/1716:36
+ * @date 2018/8/17 16:36
  */
 @MappedSuperclass //使用该注解 使其类不映射到数据库表(不在数据库中创建表  但其属性字段都将在子类数据库字段中)
 public abstract class BaseEntity implements Serializable {
@@ -23,23 +22,19 @@ public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = 6667979858215354999L;
 
     @Version
-    @JsonIgnore
-    @Column(columnDefinition = "integer Default 0 ",nullable = false)
+    @Column(columnDefinition = "float Default 0.1 ",nullable = false)
     private Long version;
 
     @CreatedBy
-    @JsonIgnore
     @Column(name = "create_by" ,length = 50 ,updatable = false)
     private String CreateBy;
 
     @CreatedDate
-    @JsonIgnore
     @Column(name = "create_date")
     private ZonedDateTime createDate = ZonedDateTime.now();
 
 
     @LastModifiedBy
-    @JsonIgnore
     @Column(name = "update_by", length = 50)
     private String lastModifiedBy;
 

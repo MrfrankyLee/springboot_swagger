@@ -2,6 +2,8 @@ package com.springboot.swagger.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -21,9 +23,11 @@ public class User extends BaseEntity implements Serializable {
     private long id;
 
     @ApiModelProperty(value = "用户名")
+    @JsonInclude(JsonInclude.Include.NON_NULL) // 数据为空不显示
     private String userName;
 
     @ApiModelProperty(value = "密码")
+    @JsonIgnore
     private String password;
 
     @Column(name = "real_name")
