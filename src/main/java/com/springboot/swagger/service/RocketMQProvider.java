@@ -23,6 +23,10 @@ public class RocketMQProvider {
     @Value("${apache.rocketmq.producer.producerGroup}")
     private String producerGroup;
 
+    @Value("${apache.rocketmq.namesrvAddr}")
+    private String namesrvAddr;
+
+
     /**
      * NameServer 地址
      */
@@ -35,7 +39,7 @@ public class RocketMQProvider {
         DefaultMQProducer producer = new DefaultMQProducer(producerGroup);
 
         //指定NameServer地址，多个地址以 ; 隔开
-        producer.setNamesrvAddr("192.168.155.140:9876;192.168.155.139:9876");
+        producer.setNamesrvAddr(namesrvAddr);
         try {
             /**
              * Producer对象在使用之前必须要调用start初始化，初始化一次即可
