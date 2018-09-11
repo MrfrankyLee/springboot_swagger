@@ -1,6 +1,8 @@
 package com.springboot.swagger.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -31,6 +33,7 @@ public abstract class BaseEntity implements Serializable {
 
     @CreatedDate
     @Column(name = "create_date")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private ZonedDateTime createDate = ZonedDateTime.now();
 
 
