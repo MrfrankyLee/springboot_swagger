@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,9 +91,14 @@ public class UserController {
     @ApiOperation(value="缓存对象到redis",notes = "RedisSaveObj")
     public String RedisSaveObj(HttpServletRequest request){
         List<User> list = userService.findall();
-        for(User u :list){
-            stringRedisTemplate.opsForValue().set(JSON.toJSONString(u.getId()),JSON.toJSONString(u));
+        try {
+            for(User user :list){
+                redisTemplate.opsForValue().set(user.getId(),user);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
+
         return "successs";
     }
     @RequestMapping(value = "/getObj",method = RequestMethod.GET)
