@@ -2,29 +2,26 @@ package com.springboot.swagger.pojo;
 
 import com.springboot.swagger.enums.EnumUtil;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import java.io.Serializable;
 
 /**
  * @author lixiaole
- * @date 2018/8/20 14:57
+ * @date 2018/9/12 16:45
  */
-public class Student implements Serializable {
+public class Teacher implements Serializable {
+    private static final long serialVersionUID = -748634236495410610L;
 
-    private static final long serialVersionUID = 1L;
     private Long id;
     private String userName;
     private String passWord;
     private EnumUtil.UserSexEnum userSex;
     private String nickName;
 
-    public Student() {
+    public Teacher() {
         super();
     }
 
-    public Student(String userName, String passWord, EnumUtil.UserSexEnum userSex) {
+    public Teacher(String userName, String passWord, EnumUtil.UserSexEnum userSex) {
         super();
         this.passWord = passWord;
         this.userName = userName;

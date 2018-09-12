@@ -4,6 +4,7 @@ package com.springboot.swagger.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -40,7 +41,6 @@ public class User extends BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "性别")
     private Integer sex;
-
     @Column(name = "register_date")
     @ApiModelProperty(value = "注册日期")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

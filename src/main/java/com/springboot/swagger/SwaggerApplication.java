@@ -8,12 +8,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
-// 扫描mapper
-@MapperScan("com.springboot.swagger.pojo")
 //开启定时任务
 @EnableScheduling
 //开启异步调用方法
 @EnableAsync
+// 扫描mapper
+@MapperScan("com.springboot.swagger.mapper")
 public class SwaggerApplication {
 
     public static void main(String[] args) {
