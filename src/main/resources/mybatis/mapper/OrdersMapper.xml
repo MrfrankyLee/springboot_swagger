@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.swagger.mapper.OrdersMapper">
+
+    <!-- 定义查询订单关联用户的 resultMap,将整个的查询结果映射到com.mybatis.entity.Orders中 -->
+    <resultMap type="com.springboot.swagger.pojo.Orders" id="OrdersUserResultMap">
+        <!-- 配置映射的订单信息 -->
+
+        <!-- id:查询列中的唯一标识,订单信息中的唯一标识，如果多列组成唯一标识(如：一般数据库设计中的字典表 使用联合主键)，就需要配置多个id
+            column:订单信息的唯一标识 列
+            property:订单信息的唯一标识列所映射到orders中的那个属性(假如：数据库中orders表中的主键为orders_id,而实体属性名称为ordersId,
+                则这个配置应为<id column="orders_id" property="ordersId"/>,类似hibernate实体映射文件配置)。
+        -->
+        <id column="id" property="id"/>
+        <result column="user_id" property="userid"/>
+        <result column="number" property="number"/>
+        <result column="createtime" property="createTime"/>
+        <result column="note" property="note"/>
+
+        <!-- 配置映射的关联用户信息 -->
+
+        <!--association:用于映射关联查询单个对象的信息
+            property:要将关联查询的用户信息映射到Orders中那个属性
+          -->
+        <association property="user" column="user_id" javaType="com.springboot.swagger.pojo.User">
+            <!-- id:关联查询用户的唯一标识
+                column:指定唯一标识用户信息的列
+                property:映射到user的那个属性
+            -->
+            <id column="user_id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="sex" property="sex"/>
+            <result column="address" property="address"/>
+        </association>
+
+    </resultMap>
+    <select id="findOrdersUserResultMap" resultMap="OrdersUserResultMap">
+       SELECT t1.*,
+        t2.id user_id,
+        t2.username,
+        t2.sex,
+        t2.address
+      FROM
+        orders t1,
+        user t2
+      WHERE t1.user_id=t2.id
+    </select>
+</mapper>

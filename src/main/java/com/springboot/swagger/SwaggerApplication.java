@@ -2,6 +2,7 @@ package com.springboot.swagger;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,6 +15,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableAsync
 // 扫描mapper
 @MapperScan("com.springboot.swagger.mapper")
+@EnableAutoConfiguration(exclude = {
+        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class
+})
 public class SwaggerApplication {
 
     public static void main(String[] args) {

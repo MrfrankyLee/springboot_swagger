@@ -1,5 +1,7 @@
 package com.springboot.swagger.controller;
 
+import com.springboot.swagger.entity.ElasticUser;
+import com.springboot.swagger.repository.ElasticUserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -43,6 +45,8 @@ import java.util.Map;
 public class EsController {
     @Autowired
     private TransportClient transportClient;
+    @Autowired
+    private ElasticUserRepository userRepository;
 
     @ApiOperation(value="查询",notes = "查询")
     @RequestMapping(value = "/get/book/novel" , method = RequestMethod.GET)
@@ -172,5 +176,13 @@ public class EsController {
         }
 
         return new ResponseEntity(list ,HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/getOne",method = RequestMethod.GET)
+    @ApiOperation(value = "查询所有用户",notes = "查询所有用户")
+    public  List<ElasticUser> getOne(){
+       List<ElasticUser>  user = userRepository.findAll();
+        return user;
     }
 }

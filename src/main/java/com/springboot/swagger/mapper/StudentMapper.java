@@ -3,6 +3,7 @@ package com.springboot.swagger.mapper;
 import com.springboot.swagger.enums.EnumUtil;
 import com.springboot.swagger.pojo.Student;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author lixiaole
  * @date 2018/9/12 13:43
  */
+@Repository
 public interface StudentMapper {
 
 

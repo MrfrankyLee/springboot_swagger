@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.swagger.mapper.OrdersCustomMapper">
+
+    <select id="findOrdersUser" resultType="com.springboot.swagger.pojo.OrdersCustom">
+        SELECT t1.*,
+        t2.username,
+        t2.sex,
+        t2.address
+      FROM
+        orders t1,
+        user t2
+      WHERE t1.user_id=t2.id
+    </select>
+
+</mapper>
